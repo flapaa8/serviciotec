@@ -1,57 +1,25 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './Header'
+import Footer from "./Footer";
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
-import data from './data'
 
 
 function App() {
   return (
-    <div class="grid-container">
-        <header class="row">
-            <div>
-                <a className="brand" href="/">Servicio Tec</a>
-            </div>
-            <div>
-                <a href="/cart">Carrito</a>
-                <a href="/signin">Iniciar sesion</a>
-            </div>
-        </header>
+    <BrowserRouter>
+    <div className="grid-container">
+        <Header/>
         <main>
-            <div class="row center">
-              {data.products.map((product) => (
-                <div key={product._id} className="card">
-                    <a href={`/product/${product._id}`}>
-                        <img class="medium" src={product.image} alt={product.name}/>
-                    </a>
-                    <div class="card-body">
-                    <a href={`/product/${product._id}`}>
-                            <h2>{product.name} </h2>
-                        </a>
-                        <div class="rating">
-                            <span>
-                                <i class="fa fa-star"></i>
-                            </span>
-                            <span>
-                                <i class="fa fa-star"></i>
-                            </span>
-                            <span>
-                                <i class="fa fa-star"></i>
-                            </span>
-                            <span>
-                                <i class="fa fa-star"></i>
-                            </span>
-                            <span>
-                                <i class="fa fa-star"></i>
-                            </span>
-                        </div>
-                        <div class="price">${product.price}</div>
-                    </div>
-                </div>
-                ))}
-            </div>
+          <Route path="/product/:id" component={ProductScreen}></Route>
+          <Route path="/" component={HomeScreen} exact></Route>
+          
         </main>
-        <footer class="row center">
-            @  2021 Servicio Tec  -  Todos Los Derechos Reservados        </footer>
+        <Footer/>
     </div>
+    </BrowserRouter>
   );
 }
 
