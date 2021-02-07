@@ -1,14 +1,12 @@
 import React from 'react'
 import {  Link   } from 'react-router-dom'
-import Product from '../components/Product'
 import Rating from '../components/Rating'
 import data from '../data'
 
 export default function ProductScreen(props) {
     const product = data.products.find(x => x._id === props.match.params.id)
-    if(!product){
-        return <div> Product not found</div>
-    }
+    
+    
     return (
         
         <div>
@@ -59,7 +57,7 @@ export default function ProductScreen(props) {
                             </div>
                         </li>
                         <li>
-                           <button className="primary block">Add to cart</button> 
+                           <button className="primary block" >Add to cart</button> 
                         </li>
                     </ul>
                 </div>
